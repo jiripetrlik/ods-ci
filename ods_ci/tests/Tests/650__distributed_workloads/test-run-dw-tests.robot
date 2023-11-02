@@ -16,7 +16,7 @@ ${DW_JUNIT_FILE}          %{WORKSPACE=.}/junit.xml
 *** Test Cases ***
 Run distributed workloads sanity tests
     [Documentation]   Run tests located in Distributed Workloads repo downstream
-    [Tags]  Sanity
+    [Tags]  DW
 
     Skip If    "%{OPERATOR_TYPE}" != "RHODS Operator V2"
     DistributedWorkloads.Clone Git Repository    ${DW_REPO_URL}    ${DW_REPO_BRANCH}    ${DW_DIR}
