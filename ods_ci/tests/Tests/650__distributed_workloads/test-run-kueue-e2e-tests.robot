@@ -8,6 +8,7 @@ Library           OpenShiftLibrary
 Resource          ../../../tasks/Resources/RHODS_OLM/install/oc_install.robot
 
 
+
 *** Variables ***
 ${KUEUE_DIR}            kueue
 ${KUEUE_REPO_URL}       %{KUEUE_REPO_URL=https://github.com/opendatahub-io/kueue.git}
