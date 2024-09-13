@@ -32,6 +32,10 @@ Prepare Codeflare-SDK Test Setup
     Log To Console    "Restarting kueue"
     Restart Kueue
 
+    ${tmp_result} =    Run Process   curl -s "${CODEFLARE-SDK-API_URL}"
+    ...    shell=True    stderr=STDOUT
+    Log To Console    ${tmp_result.stdout}
+    
     ${latest_tag} =    Run Process   curl -s "${CODEFLARE-SDK-API_URL}" | grep '"tag_name":' | cut -d '"' -f 4
     ...    shell=True    stderr=STDOUT
     Log To Console  codeflare-sdk latest tag is : ${latest_tag.stdout}
