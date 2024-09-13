@@ -8,7 +8,7 @@ Library          Process
 ${VIRTUAL_ENV_NAME}                      venv3.9
 ${CODEFLARE-SDK-API_URL}                 %{CODEFLARE-SDK-API_URL=https://api.github.com/repos/project-codeflare/codeflare-sdk/releases/170509674}
 ${CODEFLARE-SDK_DIR}                     codeflare-sdk
-${CODEFLARE-SDK_REPO_URL}                %{CODEFLARE-SDK_REPO_URL=https://github.com/project-codeflare/codeflare-sdk.git}
+${CODEFLARE-SDK_REPO_URL}                %{CODEFLARE-SDK_REPO_URL=https://github.com/jiripetrlik/codeflare-sdk.git}
 ${DISTRIBUTED_WORKLOADS_RELEASE_ASSETS}  https://github.com/opendatahub-io/distributed-workloads/releases/download/v2.13.1
 ${FMS_HF_TUNING_IMAGE}                   quay.io/modh/fms-hf-tuning@sha256:eee08ba5bb14ead4e031408fcb2334d8da817dec3be7df8d2fc8b1a3d3bb9c1d
 ${KFTO_CORE_BINARY_NAME}                 kfto
@@ -32,18 +32,7 @@ Prepare Codeflare-SDK Test Setup
     Log To Console    "Restarting kueue"
     Restart Kueue
 
-    ${tmp_result} =    Run Process   curl -s "${CODEFLARE-SDK-API_URL}"
-    ...    shell=True    stderr=STDOUT
-    Log To Console    ${tmp_result.stdout}
-    
-    ${latest_tag} =    Run Process   curl -s "${CODEFLARE-SDK-API_URL}" | grep '"tag_name":' | cut -d '"' -f 4
-    ...    shell=True    stderr=STDOUT
-    Log To Console  codeflare-sdk latest tag is : ${latest_tag.stdout}
-    IF    ${latest_tag.rc} != 0
-        FAIL    Unable to fetch codeflare-sdk latest tag
-    END
-
-    Clone Git Repository    ${CODEFLARE-SDK_REPO_URL}    ${latest_tag.stdout}    ${CODEFLARE-SDK_DIR}
+    Clone Git Repository    ${CODEFLARE-SDK_REPO_URL}    v0.19.1-more-memory-2    ${CODEFLARE-SDK_DIR}
 
     ${result} =    Run Process  virtualenv -p python3.9 ${VIRTUAL_ENV_NAME}
     ...    shell=true    stderr=STDOUT
