@@ -33,6 +33,11 @@ Run Sanity test
     Run Kueue sanity Test    Should run with prebuilt workload
 
 
+Run Nonexisting test
+    [Documentation]    Run ginkgo Sanity test
+    [Tags]  MissingTest
+    Run Kueue sanity Test    MissingTest
+
 *** Keywords ***
 Prepare Kueue E2E Test Suite
     [Documentation]    Prepare Kueue E2E Test Suite
