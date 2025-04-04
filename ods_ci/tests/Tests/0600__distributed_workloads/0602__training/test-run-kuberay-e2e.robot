@@ -8,7 +8,7 @@ Resource          ../../../../tasks/Resources/RHODS_OLM/install/oc_install.robot
 Resource          ../../../Resources/Page/DistributedWorkloads/DistributedWorkloads.resource
 
 *** Variables ***
-${KUBERAY_RELEASE_ASSETS}     %{KUBERAY_RELEASE_ASSETS=https://github.com/opendatahub-io/kuberay/releases/latest/download}
+${KUBERAY_RELEASE_ASSETS}     %{KUBERAY_RELEASE_ASSETS=https://github.com/opendatahub-io/kuberay/releases/v1.2.2-odh-2/download}
 
 *** Test Cases ***
 Run TestRayJob test
