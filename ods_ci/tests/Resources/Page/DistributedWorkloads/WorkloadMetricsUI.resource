@@ -273,30 +273,6 @@ Compare Workload Created Date With Current Date
     ${check_workload_created_date}    Evaluate    datetime.datetime.strptime('${workload_created_date}','%m/%d/%Y') <= datetime.datetime.strptime('${current_date}','%m/%d/%Y')
     Should Be True    ${check_workload_created_date}    Workload created date (${workload_created_date}) should be less than or equal to the current date (${current_date}).
 
-Check Requested Resources Chart
-    [Documentation]    checks Requested Resources Chart
-    [Arguments]    ${project}    ${cpu_requested}   ${memory_requested}
-    Mouse Over    xpath=(//*[name()='svg']//*[local-name()='g']//*[local-name()='path'])[2]
-    ${hover_cpu_requested} =  Get Requested Resources Tooltip Text
-    Should Match   ${hover_cpu_requested}   Requested by ${project}: ${cpu_requested} cores
-    Mouse Over    xpath=//*[@id="requested-resources-chart-CPU-ChartLegend-ChartLabel-0"]
-
-    Mouse Over    xpath=(//*[name()='svg']//*[local-name()='g']//*[local-name()='path'])[8]
-    ${hover_memory_requested} =    Get Requested Resources Tooltip Text
-    Should Match   ${hover_memory_requested}   Requested by ${project}: ${memory_requested} GiB
-
-    Mouse Over    xpath=//*[@id="requested-resources-chart-CPU-ChartLegend-ChartLabel-0"]
-
-    Mouse Over    xpath=(//*[name()='svg']//*[local-name()='g']//*[local-name()='path'])[1]
-    ${hover_cpu_shared_quota} =    Get Requested Resources Tooltip Text
-    Should Match   ${hover_cpu_shared_quota}   Total shared quota: ${CPU_SHARED_QUOTA} cores
-
-    Mouse Over    xpath=//*[@id="requested-resources-chart-CPU-ChartLegend-ChartLabel-0"]
-
-    Mouse Over    xpath=(//*[name()='svg']//*[local-name()='g']//*[local-name()='path'])[7]
-    ${hover_memory_shared_quota} =    Get Requested Resources Tooltip Text
-    Should Match   ${hover_memory_shared_quota}   Total shared quota: ${MEMEORY_SHARED_QUOTA} GiB
-
 Check Distributed Workload Resource Metrics Chart
     [Documentation]    checks Distributed Workload Resource Metrics Chart
     [Arguments]    ${project}    ${cpu_requested}   ${memory_requested}    ${workload_type}    ${job_name}
